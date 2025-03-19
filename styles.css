@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    text-shadow: 0 0 5px #f0f, 0 0 10px #0ff;
+}
+
+header {
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 0 20px #ff00ff;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+.section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.projects {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project {
+    background: #111;
+    border: 2px solid #ff00ff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    min-width: 300px;
+    flex: 1;
+}
+
+.project h3 {
+    color: #0ff;
+}
+
+a {
+    color: #ff00ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+footer {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 0 20px #00ffff;
+}
