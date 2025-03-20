@@ -85,7 +85,7 @@ if (isMobile) {
         camera.position.z -= deltaY * 0.05; // Move forward/backward
         camera.position.z = Math.max(camera.position.z, -50);
 
-        camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
+        //camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
 
         touchStartY = touchEndY;
         touchStartX = touchEndX;
