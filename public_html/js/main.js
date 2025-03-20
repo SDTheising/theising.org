@@ -82,7 +82,7 @@ if (isMobile) {
         const deltaY = touchStartY - touchEndY;
         const deltaX = touchStartX - touchEndX;
 
-        camera.position.z -= deltaY * 0.05; // Move forward/backward
+        camera.position.z += deltaY * 0.05; // Move forward/backward
         camera.position.z = Math.max(camera.position.z, -50);
 
         //camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
