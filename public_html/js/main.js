@@ -17,7 +17,7 @@ addLighting(scene);
 setupControls(camera);
 const animateStars = createStarfield(scene);
 
-// ✅ Generate Boxes & Draw 90° Bent Connection Lines
+// Generate Boxes & Draw 90° Bent Connection Lines
 createPages(scene).then((pageBoxes) => {
     createLines(scene, pageBoxes); // Connect related pages
     setupControls(camera, pageBoxes); // Make them clickable

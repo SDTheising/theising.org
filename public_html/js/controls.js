@@ -34,7 +34,7 @@ export function setupControls(camera, folders) {
             const touchEndY = event.touches[0].clientY;
             const deltaY = touchStartY - touchEndY;
             camera.position.z += deltaY * 0.05;
-            //Camera bounds
+            // Camera bounds
             camera.position.z = Math.max(camera.position.z, -50);
             camera.position.z = Math.min(camera.position.z, 50);
             touchStartY = touchEndY;
@@ -46,9 +46,9 @@ export function setupControls(camera, folders) {
     } else {
         window.addEventListener("wheel", (event) => {
             camera.position.z += event.deltaY * 0.01;
-            //Camera bounds(2)
+            // Camera bounds(2)
             camera.position.z = Math.max(camera.position.z, -50);
-            //camera.position.z = Math.min(camera.position.z, 50);
+            camera.position.z = Math.min(camera.position.z, 50);
         });
     }
 }
