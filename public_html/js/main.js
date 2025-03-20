@@ -6,7 +6,8 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 2, 10); // Start position
+camera.position.set(0, 5, 10); // Start position
+camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -101,15 +102,7 @@ if (isMobile) {
     });
 }
 
-// Gyroscope Support (Optional for Mobile)
-window.addEventListener("deviceorientation", (event) => {
-    if (!isMobile) return; // Only run on mobile
-    const tiltX = event.beta;
-    const tiltY = event.gamma;
 
-    camera.rotation.x = THREE.MathUtils.degToRad(-tiltX * 0.2);
-    camera.rotation.y = THREE.MathUtils.degToRad(tiltY * 0.3);
-});
 
 // Handle Resizing
 window.addEventListener("resize", () => {
