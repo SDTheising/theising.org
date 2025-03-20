@@ -6,8 +6,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 5, 10); // Start position
-camera.lookAt(0, 0, 0);
+camera.position.set(0, 2, 10); // Start position
 
 const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -31,7 +30,7 @@ scene.add(road);
 const folderMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 const folders = [];
 for (let i = 0; i < 5; i++) {
-    const folderGeometry = new THREE.BoxGeometry(3, 2, 2);
+    const folderGeometry = new THREE.BoxGeometry(2, 2, 2);
     const folder = new THREE.Mesh(folderGeometry, folderMaterial);
     folder.position.set(Math.random() * 6 - 3, 1, -10 - i * 10);
     scene.add(folder);
@@ -57,42 +56,54 @@ window.addEventListener("pointerdown", (event) => {
     }
 });
 
-// ✅ Fixed: Handle Touch Swipe (Mobile - Now Works in Firefox!)
+// ✅ Fixed: Only Enable Touch Swipe on Mobile
 let touchStartY = 0;
 let touchStartX = 0;
 let isDragging = false;
 
-window.addEventListener("touchstart", (event) => {
-    touchStartY = event.touches[0].clientY;
-    touchStartX = event.touches[0].clientX;
-    isDragging = true;
-}, { passive: false }); // Important: Allows preventDefault()
+// Check if running on a mobile device
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
-window.addEventListener("touchmove", (event) => {
-    if (!isDragging) return;
-    
-    event.preventDefault(); // 🔥 Stops the page from scrolling! (Now works in Firefox)
+if (isMobile) {
+    window.addEventListener("touchstart", (event) => {
+        touchStartY = event.touches[0].clientY;
+        touchStartX = event.touches[0].clientX;
+        isDragging = true;
+    }, { passive: false });
 
-    const touchEndY = event.touches[0].clientY;
-    const touchEndX = event.touches[0].clientX;
-    const deltaY = touchStartY - touchEndY;
-    const deltaX = touchStartX - touchEndX;
+    window.addEventListener("touchmove", (event) => {
+        if (!isDragging) return;
+        
+        event.preventDefault(); // Stops page scrolling on mobile
 
-    camera.position.z -= deltaY * 0.05; // Move forward/backward
-    camera.position.z = Math.max(camera.position.z, -50);
+        const touchEndY = event.touches[0].clientY;
+        const touchEndX = event.touches[0].clientX;
+        const deltaY = touchStartY - touchEndY;
+        const deltaX = touchStartX - touchEndX;
 
-    camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
+        camera.position.z -= deltaY * 0.05; // Move forward/backward
+        camera.position.z = Math.max(camera.position.z, -50);
 
-    touchStartY = touchEndY;
-    touchStartX = touchEndX;
-}, { passive: false });
+        camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
 
-window.addEventListener("touchend", () => {
-    isDragging = false;
-});
+        touchStartY = touchEndY;
+        touchStartX = touchEndX;
+    }, { passive: false });
 
-// Gyroscope Support (Mobile)
+    window.addEventListener("touchend", () => {
+        isDragging = false;
+    });
+} else {
+    // ✅ Scroll Wheel Works on Desktop Now
+    window.addEventListener("wheel", (event) => {
+        camera.position.z -= event.deltaY * 0.01;
+        camera.position.z = Math.max(camera.position.z, -50);
+    });
+}
+
+// Gyroscope Support (Optional for Mobile)
 window.addEventListener("deviceorientation", (event) => {
+    if (!isMobile) return; // Only run on mobile
     const tiltX = event.beta;
     const tiltY = event.gamma;
 
