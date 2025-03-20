@@ -56,13 +56,7 @@ window.addEventListener("pointerdown", (event) => {
     }
 });
 
-// Handle Scroll (Desktop)
-window.addEventListener("wheel", (event) => {
-    camera.position.z -= event.deltaY * 0.01;
-    camera.position.z = Math.max(camera.position.z, -50);
-});
-
-// ✅ Fixed: Handle Touch Swipe (Mobile)
+// ✅ Fixed: Handle Touch Swipe (Mobile - Now Works in Firefox!)
 let touchStartY = 0;
 let touchStartX = 0;
 let isDragging = false;
@@ -71,12 +65,12 @@ window.addEventListener("touchstart", (event) => {
     touchStartY = event.touches[0].clientY;
     touchStartX = event.touches[0].clientX;
     isDragging = true;
-}, { passive: false });
+}, { passive: false }); // Important: Allows preventDefault()
 
 window.addEventListener("touchmove", (event) => {
     if (!isDragging) return;
     
-    event.preventDefault(); // Stops the page from scrolling!
+    event.preventDefault(); // 🔥 Stops the page from scrolling! (Now works in Firefox)
 
     const touchEndY = event.touches[0].clientY;
     const touchEndX = event.touches[0].clientX;
