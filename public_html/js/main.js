@@ -1,107 +1,21 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { createScene, createCamera, createRenderer } from './scene.js';
+import { addLighting } from './lighting.js';
+import { createRoad } from './road.js';
+import { createFolders } from './folders.js';
+import { setupControls } from './controls.js';
+import { createStarfield } from './stars.js';
 
-// Create scene, camera, and renderer
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000000);
+// Create the scene, camera, and renderer
+const scene = createScene();
+const camera = createCamera();
+const renderer = createRenderer();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 5, 10); // Start position
-camera.lookAt(0, 0, 0);
-
-const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio > 1 ? 1.5 : 1);
-document.body.appendChild(renderer.domElement);
-
-// Lighting
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(5, 5, 5);
-scene.add(light);
-
-// Road (A long plane to simulate the path)
-const roadGeometry = new THREE.PlaneGeometry(10, 100);
-const roadMaterial = new THREE.MeshBasicMaterial({ color: 0x222222, side: THREE.DoubleSide });
-const road = new THREE.Mesh(roadGeometry, roadMaterial);
-road.rotation.x = -Math.PI / 2;
-road.position.set(0, 0, -40);
-scene.add(road);
-
-// Wireframe Folder Objects
-const folderMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-const folders = [];
-for (let i = 0; i < 5; i++) {
-    const folderGeometry = new THREE.BoxGeometry(2, 2, 2);
-    const folder = new THREE.Mesh(folderGeometry, folderMaterial);
-    folder.position.set(Math.random() * 6 - 3, 1, -10 - i * 10);
-    scene.add(folder);
-    folders.push(folder);
-}
-
-// Raycaster for detecting clicks
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
-// Handle Clicks (Mouse & Touch)
-window.addEventListener("pointerdown", (event) => {
-    const touch = event.touches ? event.touches[0] : event;
-    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
-
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(folders);
-
-    if (intersects.length > 0) {
-        console.log("Folder clicked:", intersects[0].object);
-        alert("Opening folder: " + intersects[0].object.position.z);
-    }
-});
-
-// ✅ Fixed: Only Enable Touch Swipe on Mobile
-let touchStartY = 0;
-let touchStartX = 0;
-let isDragging = false;
-
-// Check if running on a mobile device
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-if (isMobile) {
-    window.addEventListener("touchstart", (event) => {
-        touchStartY = event.touches[0].clientY;
-        touchStartX = event.touches[0].clientX;
-        isDragging = true;
-    }, { passive: false });
-
-    window.addEventListener("touchmove", (event) => {
-        if (!isDragging) return;
-        
-        event.preventDefault(); // Stops page scrolling on mobile
-
-        const touchEndY = event.touches[0].clientY;
-        const touchEndX = event.touches[0].clientX;
-        const deltaY = touchStartY - touchEndY;
-        const deltaX = touchStartX - touchEndX;
-
-        camera.position.z += deltaY * 0.05; // Move forward/backward
-        camera.position.z = Math.max(camera.position.z, -50);
-
-        //camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
-
-        touchStartY = touchEndY;
-        touchStartX = touchEndX;
-    }, { passive: false });
-
-    window.addEventListener("touchend", () => {
-        isDragging = false;
-    });
-} else {
-    // ✅ Scroll Wheel Works on Desktop Now
-    window.addEventListener("wheel", (event) => {
-        camera.position.z -= event.deltaY * 0.01;
-        camera.position.z = Math.max(camera.position.z, -50);
-    });
-}
-
+// Add elements
+addLighting(scene);
+//createRoad(scene);
+const folders = createFolders(scene);
+setupControls(camera, folders);
+const animateStars = createStarfield(scene);
 
 
 // Handle Resizing
@@ -111,9 +25,11 @@ window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
+    animateStars();
     renderer.render(scene, camera);
 }
 animate();
