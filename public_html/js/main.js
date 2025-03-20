@@ -13,8 +13,7 @@ const renderer = createRenderer();
 
 // Add elements
 addLighting(scene);
-//createRoad(scene);
-setupControls(camera);
+createRoad(scene);
 const animateStars = createStarfield(scene);
 
 // ✅ Ensure `setupControls` Runs Only After Models Are Loaded
