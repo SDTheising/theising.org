@@ -6,7 +6,8 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 2, 10); // Start position
+camera.position.set(0, 5, 10); // Start position
+camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -30,7 +31,7 @@ scene.add(road);
 const folderMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 const folders = [];
 for (let i = 0; i < 5; i++) {
-    const folderGeometry = new THREE.BoxGeometry(2, 2, 2);
+    const folderGeometry = new THREE.BoxGeometry(3, 2, 2);
     const folder = new THREE.Mesh(folderGeometry, folderMaterial);
     folder.position.set(Math.random() * 6 - 3, 1, -10 - i * 10);
     scene.add(folder);
