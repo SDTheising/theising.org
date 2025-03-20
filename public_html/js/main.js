@@ -1,9 +1,10 @@
 import { createScene, createCamera, createRenderer } from './scene.js';
 import { addLighting } from './lighting.js';
 import { createRoad } from './road.js';
-import { createFolders } from './folders.js';
-import { setupControls } from './controls.js';
 import { createStarfield } from './stars.js';
+import { setupControls } from './controls.js';
+import { createPages } from './pages.js';
+import { createLines } from './lines.js'; // Import lines
 
 // Create the scene, camera, and renderer
 const scene = createScene();
@@ -12,29 +13,28 @@ const renderer = createRenderer();
 
 // Add elements
 addLighting(scene);
-<<<<<<< Updated upstream
 //createRoad(scene);
-const folders = createFolders(scene);
-setupControls(camera, folders);
+setupControls(camera);
 const animateStars = createStarfield(scene);
 
-=======
-createRoad(scene);
-const animateStars = createStarfield(scene);
-
-// ✅ Ensure `setupControls` Runs Only After GLB Models Are Loaded
+// ✅ Ensure `setupControls` Runs Only After Models Are Loaded
 createPages(scene).then((pageObjects) => {
     if (!pageObjects || pageObjects.length === 0) {
-        console.warn("No page objects were created! Make sure the GLB model is correctly loaded.");
+        console.warn("No page objects were created!");
+        return;
+    }
+    console.log("Page objects loaded:", pageObjects);
+
+    // ✅ Ensure all models are actually defined
+    const validObjects = pageObjects.filter(p => p.model);
+    if (validObjects.length === 0) {
+        console.error("No valid models found in pageObjects!");
         return;
     }
 
-    console.log("Page objects loaded:", pageObjects);
-
-    createLines(scene, pageObjects); // Connect related pages
-    setupControls(camera, pageObjects); // Now it's safe to use pageObjects
+    createLines(scene, validObjects); // Connect related pages
+    setupControls(camera, validObjects); // Now it's safe to use pageObjects
 });
->>>>>>> Stashed changes
 
 // Handle Resizing
 window.addEventListener("resize", () => {
@@ -42,7 +42,6 @@ window.addEventListener("resize", () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
 
 // Animation Loop
 function animate() {

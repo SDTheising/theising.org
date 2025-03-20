@@ -49,7 +49,9 @@ export function setupControls(camera, pageObjects) {
             const touchEndY = event.touches[0].clientY;
             const deltaY = touchStartY - touchEndY;
             camera.position.z += deltaY * 0.05;
+            // Camera bounds
             camera.position.z = Math.max(camera.position.z, -50);
+            camera.position.z = Math.min(camera.position.z, 50);
             touchStartY = touchEndY;
         }, { passive: true });
 
@@ -59,7 +61,9 @@ export function setupControls(camera, pageObjects) {
     } else {
         window.addEventListener("wheel", (event) => {
             camera.position.z += event.deltaY * 0.01;
+            // Camera bounds(2)
             camera.position.z = Math.max(camera.position.z, -50);
+            camera.position.z = Math.min(camera.position.z, 50);
         });
     }
 =======
