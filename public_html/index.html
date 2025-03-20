@@ -3,15 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Theising's Portfolio</title>
-    <style src = ./css/style.css></style>
+    <title>3D File Explorer</title>
     <style>
-        body { margin: 0; overflow: hidden; background-color: black; }
-        #canvas-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; }
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
     <div id="canvas-container"></div>
+    <div class="overlay">Scroll or Swipe to Move | Tap Folders to Open</div>
+
+    <!-- Import Map for Three.js -->
     <script type="importmap">
         {
             "imports": {
@@ -20,6 +45,8 @@
             }
         }
     </script>
+
+    <!-- Load Three.js script -->
     <script type="module" src="./js/main.js"></script>
 </body>
 </html>
