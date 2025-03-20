@@ -62,19 +62,38 @@ window.addEventListener("wheel", (event) => {
     camera.position.z = Math.max(camera.position.z, -50);
 });
 
-// Handle Touch Swipe (Mobile)
+// ✅ Fixed: Handle Touch Swipe (Mobile)
 let touchStartY = 0;
+let touchStartX = 0;
+let isDragging = false;
+
 window.addEventListener("touchstart", (event) => {
     touchStartY = event.touches[0].clientY;
-});
+    touchStartX = event.touches[0].clientX;
+    isDragging = true;
+}, { passive: false });
 
 window.addEventListener("touchmove", (event) => {
-    const touchEndY = event.touches[0].clientY;
-    const deltaY = touchStartY - touchEndY;
+    if (!isDragging) return;
+    
+    event.preventDefault(); // Stops the page from scrolling!
 
-    camera.position.z -= deltaY * 0.05;
+    const touchEndY = event.touches[0].clientY;
+    const touchEndX = event.touches[0].clientX;
+    const deltaY = touchStartY - touchEndY;
+    const deltaX = touchStartX - touchEndX;
+
+    camera.position.z -= deltaY * 0.05; // Move forward/backward
     camera.position.z = Math.max(camera.position.z, -50);
+
+    camera.rotation.y -= deltaX * 0.005; // Slightly rotate with side swipes
+
     touchStartY = touchEndY;
+    touchStartX = touchEndX;
+}, { passive: false });
+
+window.addEventListener("touchend", () => {
+    isDragging = false;
 });
 
 // Gyroscope Support (Mobile)
