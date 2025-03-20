@@ -1,22 +1,37 @@
-import * as THREE from 'three';
+export function setupControls(camera, pageObjects) {
+    if (!pageObjects || pageObjects.length === 0) {
+        console.error("setupControls: No objects available for interaction.");
+        return;
+    }
 
-export function setupControls(camera, folders) {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
     window.addEventListener("pointerdown", (event) => {
-        const touch = event.touches ? event.touches[0] : event;
-        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(folders);
 
+        // ✅ Fix: Make sure we're checking actual objects, not undefined values
+        const models = pageObjects
+            .map(p => p.model)
+            .filter(obj => obj && obj.isObject3D); // Ensure valid objects
+
+        if (models.length === 0) {
+            console.warn("No interactable models found.");
+            return;
+        }
+
+        const intersects = raycaster.intersectObjects(models, true); // `true` enables recursive check in GLTF models
         if (intersects.length > 0) {
-            console.log("Folder clicked:", intersects[0].object);
-            alert("Opening folder: " + intersects[0].object.position.z);
+            const clickedModel = pageObjects.find(p => p.model === intersects[0].object.parent);
+            if (clickedModel) {
+                window.open(clickedModel.url, "_blank"); // Open page in new tab
+            }
         }
     });
+<<<<<<< Updated upstream
 
     let touchStartY = 0;
     let isDragging = false;
@@ -47,4 +62,6 @@ export function setupControls(camera, folders) {
             camera.position.z = Math.max(camera.position.z, -50);
         });
     }
+=======
+>>>>>>> Stashed changes
 }

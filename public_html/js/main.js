@@ -12,11 +12,29 @@ const renderer = createRenderer();
 
 // Add elements
 addLighting(scene);
+<<<<<<< Updated upstream
 //createRoad(scene);
 const folders = createFolders(scene);
 setupControls(camera, folders);
 const animateStars = createStarfield(scene);
 
+=======
+createRoad(scene);
+const animateStars = createStarfield(scene);
+
+// ✅ Ensure `setupControls` Runs Only After GLB Models Are Loaded
+createPages(scene).then((pageObjects) => {
+    if (!pageObjects || pageObjects.length === 0) {
+        console.warn("No page objects were created! Make sure the GLB model is correctly loaded.");
+        return;
+    }
+
+    console.log("Page objects loaded:", pageObjects);
+
+    createLines(scene, pageObjects); // Connect related pages
+    setupControls(camera, pageObjects); // Now it's safe to use pageObjects
+});
+>>>>>>> Stashed changes
 
 // Handle Resizing
 window.addEventListener("resize", () => {
