@@ -1,46 +1,38 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-// Setup Scene, Camera, and Renderer
-const container = document.getElementById("canvas-container");
+// Create scene, camera, and renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 5, 10); // Start slightly above the road
-camera.lookAt(0,0,0);
+camera.position.set(0, 2, 10); // Start position
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio > 1 ? 1.5 : 1);
 document.body.appendChild(renderer.domElement);
 
-// Handle Window Resizing
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// Add Lighting
+// Lighting
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 5, 5);
 scene.add(light);
 
-// Road (Just a large stretched plane)
+// Road (A long plane to simulate the path)
 const roadGeometry = new THREE.PlaneGeometry(10, 100);
 const roadMaterial = new THREE.MeshBasicMaterial({ color: 0x222222, side: THREE.DoubleSide });
 const road = new THREE.Mesh(roadGeometry, roadMaterial);
 road.rotation.x = -Math.PI / 2;
-road.position.set(0, 0, -40); // Positioned downward so it looks like a road
+road.position.set(0, 0, -40);
 scene.add(road);
 
-// Create Wireframe Folder Objects
+// Wireframe Folder Objects
 const folderMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 const folders = [];
 for (let i = 0; i < 5; i++) {
     const folderGeometry = new THREE.BoxGeometry(2, 2, 2);
     const folder = new THREE.Mesh(folderGeometry, folderMaterial);
-    folder.position.set(Math.random() * 6 - 3, 1, -10 - i * 10); // Spread along the path
+    folder.position.set(Math.random() * 6 - 3, 1, -10 - i * 10);
     scene.add(folder);
     folders.push(folder);
 }
@@ -49,11 +41,11 @@ for (let i = 0; i < 5; i++) {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Handle Click Events
-window.addEventListener("click", (event) => {
-    // Convert mouse position to normalized device coordinates (-1 to +1)
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+// Handle Clicks (Mouse & Touch)
+window.addEventListener("pointerdown", (event) => {
+    const touch = event.touches ? event.touches[0] : event;
+    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(folders);
@@ -61,14 +53,44 @@ window.addEventListener("click", (event) => {
     if (intersects.length > 0) {
         console.log("Folder clicked:", intersects[0].object);
         alert("Opening folder: " + intersects[0].object.position.z);
-        // You can add logic to animate the camera, load content, etc.
     }
 });
 
-// Handle Scrolling to Move Camera Forward
+// Handle Scroll (Desktop)
 window.addEventListener("wheel", (event) => {
-    camera.position.z -= event.deltaY * 0.01; // Move forward/backward
-    camera.position.z = Math.max(camera.position.z, -50); // Limit movement
+    camera.position.z -= event.deltaY * 0.01;
+    camera.position.z = Math.max(camera.position.z, -50);
+});
+
+// Handle Touch Swipe (Mobile)
+let touchStartY = 0;
+window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", (event) => {
+    const touchEndY = event.touches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+
+    camera.position.z -= deltaY * 0.05;
+    camera.position.z = Math.max(camera.position.z, -50);
+    touchStartY = touchEndY;
+});
+
+// Gyroscope Support (Mobile)
+window.addEventListener("deviceorientation", (event) => {
+    const tiltX = event.beta;
+    const tiltY = event.gamma;
+
+    camera.rotation.x = THREE.MathUtils.degToRad(-tiltX * 0.2);
+    camera.rotation.y = THREE.MathUtils.degToRad(tiltY * 0.3);
+});
+
+// Handle Resizing
+window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 // Animation Loop
