@@ -31,7 +31,6 @@ export function setupControls(camera, pageObjects) {
             }
         }
     });
-<<<<<<< Updated upstream
 
     let touchStartY = 0;
     let isDragging = false;
@@ -66,6 +65,4 @@ export function setupControls(camera, pageObjects) {
             camera.position.z = Math.min(camera.position.z, 50);
         });
     }
-=======
->>>>>>> Stashed changes
 }

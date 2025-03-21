@@ -13,26 +13,14 @@ const renderer = createRenderer();
 
 // Add elements
 addLighting(scene);
-createRoad(scene);
+//createRoad(scene);
+setupControls(camera);
 const animateStars = createStarfield(scene);
 
-// ✅ Ensure `setupControls` Runs Only After Models Are Loaded
-createPages(scene).then((pageObjects) => {
-    if (!pageObjects || pageObjects.length === 0) {
-        console.warn("No page objects were created!");
-        return;
-    }
-    console.log("Page objects loaded:", pageObjects);
-
-    // ✅ Ensure all models are actually defined
-    const validObjects = pageObjects.filter(p => p.model);
-    if (validObjects.length === 0) {
-        console.error("No valid models found in pageObjects!");
-        return;
-    }
-
-    createLines(scene, validObjects); // Connect related pages
-    setupControls(camera, validObjects); // Now it's safe to use pageObjects
+// Generate Boxes & Draw 90° Bent Connection Lines
+createPages(scene).then((pageBoxes) => {
+    createLines(scene, pageBoxes); // Connect related pages
+    setupControls(camera, pageBoxes); // Make them clickable
 });
 
 // Handle Resizing
