@@ -2,14 +2,20 @@ export const siteTree = {
     name: 'root',
     type: 'folder',
     children: [
-        { name: 'Fake', type: 'file', url: './fake.html' },
-        { name: 'Mutual Learning', type: 'file', url: './mutuallearning.html' },
-        { name: 'This Site', type: 'file', url: './thissite.html' },
         {
-            name: 'Isaac',
+            name: 'Projects',
             type: 'folder',
             children: [
-                { name: 'Isaac Main', type: 'file', url: './isaac/public_html/index.html' }
+                { name: 'Mutual Learning', type: 'file', url: './mutuallearning.html' },
+                { name: 'This Site', type: 'file', url: './thissite.html' },
+            ]
+        },
+
+        {
+            name: 'About Me',
+            type: 'folder',
+            children: [
+                { name: 'About Main', type: 'file', url: './fake.html' }
             ]
         }
     ]
