@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 export function createLines(scene, pageBoxes) {
     const lines = [];
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 1 });
+    const lineMaterial = new THREE.LineBasicMaterial({ transparent: true, color: 0xffffff, linewidth: 1, opacity: 0.3});
 
     const boxWidth = 2; // Adjust if necessary (half box width is 1)
 

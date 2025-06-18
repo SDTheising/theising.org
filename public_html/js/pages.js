@@ -1,29 +1,43 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { getPages } from './fetchPages.js';
 
 export async function createPages(scene) {
     const pages = await getPages(); // Fetch URLs of subdomains/pages
-    const pageMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
+    const loader = new GLTFLoader();
+    const modelURL = './models/page_model.glb'; // Update with correct path
 
-    const pageBoxes = [];
+    const pageObjects = [];
     const roadWidth = 8;
     const roadStartZ = -10;
     const spacingZ = 10;
 
-    pages.forEach((page, index) => {
-        const pageGeometry = new THREE.BoxGeometry(2, 2, 2);
-        const pageBox = new THREE.Mesh(pageGeometry, pageMaterial);
+    try {
+        const glb = await loader.loadAsync(modelURL);
+        const baseModel = glb.scene;
 
-        // Position boxes along the road
-        pageBox.position.set(
-            (Math.random() - 0.5) * roadWidth, // Random x within road width
-            1, // Slightly above the road
-            roadStartZ - index * spacingZ // Spread along the road
-        );
+        for (let i = 0; i < pages.length; i++) {
+            const pageModel = baseModel.clone(); // Clone model for each page
 
-        scene.add(pageBox);
-        pageBoxes.push({ box: pageBox, url: page, connections: [] });
-    });
+            // Position the models along the road
+            pageModel.position.set(
+                (Math.random() - 0.5) * roadWidth, // Random X within the road width
+                0, // Keep the model on the road
+                roadStartZ - i * spacingZ // Spread along the road
+            );
 
-    return pageBoxes;
+            // Scale the model if needed
+            pageModel.scale.set(1.5, 1.5, 1.5); // Adjust as needed
+
+            // Rotate if needed
+            pageModel.rotation.y = Math.PI; // Example rotation
+
+            scene.add(pageModel);
+            pageObjects.push({ model: pageModel, url: pages[i] });
+        }
+    } catch (error) {
+        console.error("Error loading GLB model:", error);
+    }
+
+    return pageObjects;
 }
