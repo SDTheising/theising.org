@@ -11,7 +11,7 @@ const renderer = createRenderer();
 addLighting(scene);
 const animateStars = createStarfield(scene);
 
-const layers = createHierarchy(scene);
+const { layers } = createHierarchy(scene);
 setupLayerControls(camera, layers);
 
 window.addEventListener('resize', () => {

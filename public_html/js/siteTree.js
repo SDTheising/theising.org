@@ -8,7 +8,24 @@ export const siteTree = {
             children: [
                 { name: 'Mutual Learning', type: 'file', url: './mutuallearning.html' },
                 { name: 'This Site', type: 'file', url: './thissite.html' },
+                {
+            name: 'Projects',
+            type: 'folder',
+            children: [
+                { name: 'Mutual Learning', type: 'file', url: './mutuallearning.html' },
+                { name: 'This Site', type: 'file', url: './thissite.html' },
+                {
+            name: 'Projects',
+            type: 'folder',
+            children: [
+                { name: 'Mutual Learning', type: 'file', url: './mutuallearning.html' },
+                { name: 'This Site', type: 'file', url: './thissite.html' },
             ]
+        },
+            ]
+        },
+            ]
+
         },
 
         {
