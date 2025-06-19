@@ -23,10 +23,18 @@ export function setupLayerControls(camera, layers) {
             const mesh = intersects[0].object;
             const node = mesh.userData.node;
             if (node.children) {
-                const pos = mesh.getWorldPosition(new THREE.Vector3());
-                lastClickedX = pos.x;
-                positionStack.push(pos.x);
-                showLayer(currentDepth + 1, pos.x);
+                let centerX = mesh.getWorldPosition(new THREE.Vector3()).x;
+                const children = mesh.userData.children || [];
+                if (children.length > 0) {
+                    let sum = 0;
+                    children.forEach(child => {
+                        sum += child.getWorldPosition(new THREE.Vector3()).x;
+                    });
+                    centerX = sum / children.length;
+                }
+                lastClickedX = centerX;
+                positionStack.push(centerX);
+                showLayer(currentDepth + 1, centerX);
             } else if (node.url) {
                 window.location.href = node.url;
             }

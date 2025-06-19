@@ -27,6 +27,9 @@ export function createHierarchy(scene) {
             mesh.position.x = parentX + offset * (size + 1.5);
             mesh.position.y = 0;
             mesh.userData.node = node;
+            if (parentMesh) {
+                mesh.userData.parent = parentMesh;
+            }
             layers[depth].add(mesh);
 
             if (parentMesh) {
