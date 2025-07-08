@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Samuel Theising</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <div style="display: inline-block;">
+          <h1 class="brand">Samuel Theising</h1>
+          <p>CS Graduate/Web Developer</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="container">
+      <h2 class="brand">Contact Us</h2>
+      <p><strong>Phone:</strong> Please email for it. It's already online but I don't want it even easier to find.</p>
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+      <form id="contact-form" action="./php/send-email.php" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="tel" name="phone" placeholder="Phone" />
+        <textarea name="message" placeholder="Your message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>      
+      <p id="status-message"></p>
+
+        <script>
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const statusEl = document.getElementById('status-message');
+
+        if (status === 'success') {
+            statusEl.textContent = 'Message sent successfully!';
+            statusEl.style.color = 'green';
+        } else if (status === 'error') {
+            statusEl.textContent = 'There was an error sending your message.';
+            statusEl.style.color = 'red';
+        }
+        </script>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

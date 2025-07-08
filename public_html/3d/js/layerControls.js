@@ -26,10 +26,7 @@ export function setupLayerControls(camera, layers) {
                 let centerX = mesh.getWorldPosition(new THREE.Vector3()).x;
                 const children = mesh.userData.children || [];
                 if (children.length > 0) {
-                    let sum = 0;
-                    children.forEach(child => {
-                        sum += child.getWorldPosition(new THREE.Vector3()).x;
-                    });
+                        const sum = children.reduce((acc, child) => acc + child.getWorldPosition(new THREE.Vector3()).x, 0);
                     centerX = sum / children.length;
                 }
                 lastClickedX = centerX;

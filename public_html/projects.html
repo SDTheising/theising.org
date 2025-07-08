@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Samuel Theising</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/content.js"></script>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <div style="display: inline-block;">
+          <h1 class="brand">Samuel Theising</h1>
+          <p>CS Graduate/Web Developer</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+      <section class="quick-links">
+        <div class="flex-container">
+          <button class="card" onclick="showSection('section1')">
+            <h4>Mutual Learning in Machine Learning Algorithms</h4>
+
+            <p><span class="brand">
+              My Group Capstone
+            </span>
+            </p>
+          <p>
+            A project involving Machine Learning, replicating a prior study from a professor I studied under. 
+          </p>
+          </button>
+          <button class="card" onclick="showSection('section2')">
+            <h4>[Project2]</h4>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          </button>
+          <button class="card" onclick="showSection('section3')">
+            <h4>[Project3]</h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </button>
+          <button class="card" onclick="showSection('section4')">
+            <h4>[Project4]</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </button>
+          <button class="card" onclick="showSection('section5')">
+            <h4>[Project5]</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </button>
+        </div>
+    </section>
+    <section class = "flex-container">
+      <!-- Content Sections -->
+      <div id="section1" class="content-section gallery hidden">
+        <!-- Content for Section 1 -->
+
+          <div> 
+          <h2>Mutual Learning in Machine Learning Algorithms</h2>
+
+          <hr>
+
+            <div>
+              <p dir="ltr" id="docs-internal-guid-37df70f9-7fff-2e78-0716-52b37b04e991">
+     <br/>
+</p>
+<p dir="ltr">
+    John Wellspring <br/>
+    Bachelors of Science <br/>
+    Purdue University <br/>
+    Indianapolis, Indiana <br/>
+    jwellspr@purdue.edu <br/>
+    Samuel Theising <br/>
+    Bachelors of Art <br/>
+    Purdue University <br/>
+    Indianapolis, Indiana <br/>
+    theisingsamuel@gmail.com <br/>
+    Nassim Zerrouak <br/>
+    Bachelors of Science <br/>
+    Purdue University <br/>
+    Indianapolis, Indiana <br/>
+    nzerroua@purdue.edu <br/>
+    <br/>
+    Zane Smith <br/>
+    Bachelors of Science <br/>
+    Purdue University <br/>
+    Indianapolis, Indiana <br/>
+    smithzm@purdue.edu <br/>
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<p dir="ltr">
+    Abstract—
+</p>
+<p dir="ltr">
+    Mutual learning explores the concept of machine learning, where models such
+    as Stochastic Gradient Descent Classifier (SGDC) and Naive Bayes can help
+    justify or improve each other's performance by exchanging knowledge during
+    training. Data can be explored and understood by the computer’s, leading to
+    generalization of News Article classification. This paper will explore how
+    mutual learning can be applied to News Article classification and how these
+    models can benefit from cross training each other, and how this methodology
+    can  produce models that rival the accuracy of those trained on
+    significantly larger datasets.
+</p>
+<br/>
+<p dir="ltr">
+    Keywords—Machine learning, Mutual learning, Data classification.
+</p>
+<ol>
+    <li dir="ltr">
+        <h1 dir="ltr">
+            Introduction
+        </h1>
+    </li>
+</ol>
+<p dir="ltr">
+    This paper discusses the progress made in the creation of a Mutual Learning
+    algorithm for the purpose of news classification. It will attempt to
+    demonstrate the thought process and development process for both the
+    algorithms and codebase.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <h1 dir="ltr">
+            Data Preprocessing
+        </h1>
+    </li>
+    <ol>
+        <li dir="ltr">
+            <h2 dir="ltr">
+                General Process
+            </h2>
+        </li>
+    </ol>
+</ol>
+<p dir="ltr">
+    In order to process the data, it would need to be stemmed, lemmatized, and
+    tokenized. In order to do this, the open source library SpaCy [1] was used
+    in conjunction with NLTK  [5]. The total data was also split into 3 equal
+    sized chunks, each being dedicated to a particular model or step. The splits
+    were not controlled for equal categorization, despite the chance at improved
+    accuracy, to better mimic real-world in which each model may not be provided
+    with balanced data.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <p dir="ltr">
+            Stemming
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    All of the provided data was stemmed via NLTK [5] before being lemmatized.
+    This is done to simplify the data down to its root before returning it to a
+    slightly more readable and meaningful form for the analysis.
+</p>
+<br/>
+<ol start="3">
+    <li dir="ltr">
+        <h2 dir="ltr">
+            Lemmatization
+        </h2>
+    </li>
+</ol>
+<p dir="ltr">
+    The given data, stored in both BBC_train_full and test_data was filtered
+    through SpaCy [1] for the purpose of creating readable tokens with any
+    extraneous data removed. Items such as numbers and individual letters were
+    intentionally saved, as they could prove important to the overall
+    classification. The purpose of this is to overall reduce the amount of noise
+    in the data and reduce words into their lemma.
+</p>
+<br/>
+<p dir="ltr">
+    D.  Tokenization
+</p>
+<p dir="ltr">
+    This data, now parsed down into a more usable format, was then turned into
+    individual tokens to be used within the model. This data was then fed into
+    the model for both training and testing. Words are now easier to be read and
+    seen by the models, allowing for an easier understanding/meaning to the
+    data.
+</p>
+<ol start="3">
+    <li dir="ltr">
+        <h1 dir="ltr">
+            Algorithms
+        </h1>
+    </li>
+</ol>
+<p dir="ltr">
+    Our project involves implementing two fundamental machine learning
+    algorithms for text classification: Naive Bayes and Stochastic Gradient
+    Descent Classifier (SGDC). These two models serve as the foundation for the
+    initial classification task. In the final stage of our project, we will
+    enhance their performance using Mutual Learning, where the two models will
+    iteratively share knowledge to improve the overall accuracy. Below, we
+    describe the individual algorithms and their role in the mutual learning
+    framework:
+</p>
+<ol>
+    <li dir="ltr">
+        <h2 dir="ltr">
+            Stochastic Gradient Descent
+        </h2>
+    </li>
+</ol>
+<p dir="ltr">
+    Stochastic Gradient Descent (SGDC) is a supervised learning algorithm that
+    can perform both classification and regression. For our project, we are
+    using a linear hinge loss SGDC, which works by finding the optimal
+    hyperplane that separates different classes in a high-dimensional feature
+    space. This model was used to emulate the behavior of a Support Vector
+    Machine.
+</p>
+<ol>
+    <li dir="ltr">
+        <p dir="ltr">
+            Objective:
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    The goal of SGDC is to maximize the margin between the decision boundary
+    (hyperplane) and the nearest data points from each class, known as support
+    vectors.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <p dir="ltr">
+            Steps:
+        </p>
+    </li>
+</ol>
+<ul>
+    <li dir="ltr">
+        <p dir="ltr">
+            Convert the tokenized news articles into numerical form using
+            TF-IDF.
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            Train the SGDC model to find the optimal hyperplane that separates
+            the categories.
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            Use the model to classify new, unseen news articles based on the
+            learned decision boundary.
+        </p>
+    </li>
+</ul>
+<p dir="ltr">
+    SGDC is known for its effectiveness in high-dimensional spaces and its
+    ability to create complex decision boundaries, making it a strong choice for
+    text classification tasks.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <h2 dir="ltr">
+            Naive Bayes
+        </h2>
+    </li>
+</ol>
+<p dir="ltr">
+    The Naive Bayes algorithm is a probabilistic classifier based on Bayes'
+    Theorem, with an assumption of independence between the features. Despite
+    this simple assumption, Naive Bayes has proven highly effective for text
+    classification tasks, particularly when the dimensionality of the data is
+    high, as in the case of natural language processing.
+</p>
+<ol>
+    <li dir="ltr">
+        <p dir="ltr">
+            Assumption:
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    Naive Bayes assumes that all features (words in our case) are independent of
+    each other given the class. In text classification, this means that the
+    occurrence of a word in an article is independent of the occurrence of other
+    words.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <p dir="ltr">
+            Steps:
+        </p>
+    </li>
+</ol>
+<ul>
+    <li dir="ltr">
+        <p dir="ltr">
+            Preprocess the text data by tokenizing the news articles and
+            converting them into a numerical representation using TF-IDF
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            Calculate the conditional probabilities for each word and classify
+            the text into one of the predefined categories (business, politics,
+            sports, entertainment, tech) based on the posterior probability
+        </p>
+    </li>
+</ul>
+<p dir="ltr">
+    Naive Bayes is chosen because of its simplicity, speed, and effectiveness
+    with large vocabulary sizes, which are typical in text classification
+    problems.
+</p>
+<ol start="3">
+    <li dir="ltr">
+        <h2 dir="ltr">
+            Mutual Learning Framework
+        </h2>
+    </li>
+</ol>
+<p dir="ltr">
+    In the final phase of the project, the Naive Bayes and SGDC models will be
+    integrated into a Mutual Learning framework. Mutual learning is a
+    collaborative learning method where both models can exchange knowledge
+    during the training process to enhance performance.
+</p>
+<ol>
+    <li dir="ltr">
+        <p dir="ltr">
+            Knowledge Sharing:
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    After an initial phase of independent training, the models were given an
+    unlabeled dataset and output their predicted labels, along with the
+    posterior probability for each one. Based on that information, labels with
+    the highest probability were selected, creating a third equal sized data set
+    to learn from.
+</p>
+<ol start="2">
+    <li dir="ltr">
+        <p dir="ltr">
+            Mutual Learning:
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    After the third dataset was created, both models use this to continue their
+    training. The combination of the two models' predictions give both extra
+    training data, as well as passing along some of the differences in what was
+    learned about the classification to the other model.  By leveraging the
+    complementary strengths of Naive Bayes (good with probabilistic reasoning)
+    and SGDC (good with decision boundaries), we aim to achieve better accuracy
+    than either model individually.
+</p>
+<br/>
+<ol start="3">
+    <li dir="ltr">
+        <p dir="ltr">
+            Final Prediction:
+        </p>
+    </li>
+</ol>
+<p dir="ltr">
+    Following this, each model performed a final stage of retraining against its
+    own original labeled data. This process attempts to allow the models to gain
+    the strengths of the other, while being given a chance to reinforce its own
+    strengths in hopes of not transferring their weaknesses and further refining
+    their performance.
+</p>
+<br/>
+<ol start="4">
+    <li dir="ltr">
+        <h2 dir="ltr">
+            Results Before Relearning
+        </h2>
+    </li>
+</ol>
+<p dir="ltr">
+    Under the current methodology, both SGDC and Naive Bayes perform similarly
+    trained off of their respective training sets. Overall, SGDC had an accuracy
+    rate of 97 percent, while Naive Bayes had an accuracy rate of 93 percent,
+    with most errors occurring in the same two categories: Business and
+    Entertainment. Shown below is a comparison of the two, modeled in
+    matplotlib. [3]
+</p>
+<figure>
+    <img src="images/CMSGDClassifier.png" width="336" height="288" />
+    <figcaption>Fig 1. Confusion Matrix for SGDClassifier</figcaption>
+    <img src="images/CMNB.png" width="336" height="230" />
+    <figcaption>Fig 2. Confusion Matrix for Naive Bayes</figcaption>
+</figure>
+<br/>
+
+<p dir="ltr">
+    While there are minor variations throughout, these may arise from the
+    differences in the training data, which was not evenly spread across the
+    splits, instead having opted for random spreading across the three equal
+    sections of training data.
+</p>
+<p dir="ltr">
+    E. Results After Retraining
+</p>
+<p dir="ltr">
+    After we retrained the model following the given algorithm we are retraining
+    each of the models by using the allowing both SGDC and Naive Bayes to learn
+    off of each other by retaining the overall weaker model. In this step there
+    is expected to be an increase in accuracy for both models similar to those
+    results of training on the full dataset with labels. Instead of it seeing
+    the full dataset it is only getting to see two-thirds of the dataset, with
+    one third being self labeled. Again we will be showing the results via
+    matplotlib. [3]
+</p>
+
+<figure>
+        <img src="images/NVCR.png" width="336" height="224" />
+    <figcaption>Fig 3. Naive Bayes Classification Report</figcaption>
+    <img src="images/SGDCCR.png" width="336" height="230" />
+    <figcaption>Fig 4. SGDC Classification Report/figcaption>
+</figure>
+
+<p dir="ltr">
+    From the above models there was an increase in accuracy for both models.
+    Where we can see jumps in categories that before struggled.
+</p>
+<ol start="4">
+    <li dir="ltr">
+        <h1 dir="ltr">
+            Conclusion
+        </h1>
+    </li>
+</ol>
+<p dir="ltr">
+    The methodology presented in this paper successfully achieved its goal of
+    producing text classifiers that perform comparably to those trained on
+    significantly larger datasets. By leveraging mutual learning, the Naive
+    Bayes and SGDC models were able to enhance each other’s performance through
+    knowledge sharing and collaborative training. This approach has demonstrated
+    its effectiveness as a tool for improving classifier accuracy, particularly
+    in scenarios with limited labeled data. Its potential extends to future
+    applications, where it can be implemented to boost the performance of
+    classifiers across various domains.
+</p>
+<br/>
+<ol>
+    <li dir="ltr">
+        <p dir="ltr">
+            M. Honnibal, I. Montani, S. Van Landeghem, and A. Boyd, "spaCy:
+            Industrial-strength natural language processing in Python," 2020.
+            [Online]. Available: https://doi.org/10.5281/zenodo.1212303:
+            https://github.com/explosion/spaCy
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            F. Pedregosa, G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O.
+            Grisel, M. Blondel, P. Prettenhofer, R. Weiss, V. Dubourg, J.
+            Vanderplas, A. Passos, D. Cournapeau, M. Brucher, M. Perrot, and É.
+            Duchesnay, "Scikit-learn: Machine learning in Python," *J. Mach.
+            Learn. Res.*, vol. 12, pp. 2825-2830, 2011. [Online]. Available:
+            https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html
+            https://github.com/scikit-learn/scikit-learn
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            The Matplotlib Development Team, Matplotlib: Visualization with
+            Python. [Online]. Available:<a href="https://matplotlib.org/">https://matplotlib.org/</a>. 
+            [Accessed: Oct. 4, 2024].
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            Chowdhury, S.T., Kumpati, N.S., Mukhopadhyay, S. (2024). Mutual
+            Learning for News Classification. In: Arai, K. (eds) Intelligent
+            Systems and Applications. IntelliSys 2024. Lecture Notes in Networks
+            and Systems, vol 1066. Springer, Cham.
+            https://doi.org/10.1007/978-3-031-66428-1_3/.
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            S. Bird, E. Klein, and E. Loper, Natural Language Processing with
+            Python: Analyzing Text with the Natural Language Toolkit.
+            Sebastopol, CA, USA: O'Reilly Media, Inc., 2009. [Online].
+            Available: https://www.nltk.org/book/
+        </p>
+    </li>
+</ol>
+<br/>
+<br/>
+<p dir="ltr">
+    Our Github:
+</p>
+<p dir="ltr">
+    https://github.com/49500/495CapstoneProject
+</p>
+
+            </div>
+
+         </div>
+      </div>
+      <div id="section2" class="content-section gallery hidden">
+        <!-- Content for Section 2 -->
+         <div class = "flex-container">
+          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
+          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
+          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
+         </div>
+         
+          <div> 
+          <h2>Lorem ipsum dolor.</h2>
+
+          <hr>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+         </div>
+      </div>
+      <div id="section3" class="content-section gallery hidden">
+        <!-- Content for Section 3 -->
+         <div class = "flex-container">
+          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
+          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
+          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
+          </div>
+
+          <div> 
+          <h2>Lorem ipsum dolor.</h2>
+
+          <hr>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+         </div>
+      </div>
+      <div id="section4" class="content-section gallery hidden">
+        <!-- Content for Section 4 -->
+         <div class = "flex-container">
+          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
+          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
+          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
+          </div>
+
+          <div> 
+          <h2>Lorem ipsum dolor.</h2>
+
+          <hr>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+         </div>
+      </div>
+      <div id="section5" class="content-section gallery hidden">
+        <!-- Content for Section 5 -->
+         <div class = "flex-container">
+          <img src="https://placehold.co/600x400?text=Section+5" alt="Project 5" />
+          <img src="https://placehold.co/600x400?text=Section+5" alt="Project 5" />
+          <img src="https://placehold.co/600x400?text=Section+5" alt="Project 5" />
+          </div>
+
+
+          <div> 
+          <h2>Lorem ipsum dolor.</h2>
+
+          <hr>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+         </div>
+      </div>
+    </section>
+
+    <section class="container content-section">
+      <h2 class="brand">Project Gallery</h2>
+      <div class="gallery">
+        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 1" />
+        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 2" />
+        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 3" />
+      </div>
+
+      
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,93 +1,307 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* CSS HEX 
+--black-bean: #3b0d11ff;
+--lilac: #c492b1ff;
+--light-blue: #9dc7c8ff;
+--wheat: #ead2acff;
+--paynes-gray: #536b78ff;
+*/
 
+
+  
+
+html, body {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+    
 body {
-    font-family: 'Press Start 2P', cursive;
-    background: #000;
-    color: #fff;
     margin: 0;
+    font-family: 'Philosopher', sans-serif;
+    background-color: #f8f8f8;
+    color: #2c2b2b;
     padding: 0;
-    line-height: 1.6;
-    text-shadow: 0 0 5px #f0f, 0 0 10px #0ff;
-}
+    font-size: 1rem;
+  }
 
-header {
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    padding: 2rem 0;
-    text-align: center;
-    box-shadow: 0 0 20px #ff00ff;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-nav ul {
+  h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  
+  .paragraph {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .brand {
+    font-family: 'Black Ops One', sans-serif;
+    color: #ead2acff;
+  }
+  
+  .top-bar {
+    background-color: #3b0d11ff;
+    color: #ffffff;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  nav ul {
     list-style: none;
-    padding: 0;
-    margin: 1rem 0 0;
-}
-
-nav ul li {
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: text-shadow 0.3s ease;
-}
-
-nav ul li a:hover {
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
-}
-
-.section {
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.projects {
     display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.project {
-    background: #111;
-    border: 2px solid #ff00ff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
-    min-width: 300px;
-    flex: 1;
-}
-
-.project h3 {
-    color: #0ff;
-}
-
-a {
-    color: #ff00ff;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav a {
     text-decoration: none;
+    color: #ead2acff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #ffffff;
+  }
+  
+  main {
+    padding: 2rem;
+    background-color: #f8f8f8;
+    flex: 1;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+.flex-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: nowrap;           /* Prevent wrapping */
+  align-items: stretch;        /* Make all cards equal height */
+  overflow-x: auto;            /* Optional: allows horizontal scroll on small screens */
 }
 
-a:hover {
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
-}
 
-footer {
-    background: linear-gradient(45deg, #00ffff, #ff00ff);
-    padding: 2rem 0;
+
+.hero {
     text-align: center;
-    box-shadow: 0 0 20px #00ffff;
+    padding: 3rem 1rem;
+    background-size: cover;
+    background-position: center;
+    color: #000000;
+  }
+  
+  .hero .cta-button {
+    margin-top: 1rem;
+    background-color: #c492b1ff;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  
+  .hero .cta-button:hover {
+    background-color: #9dc7c8ff;
+  }
+  
+  .quick-links {
+    background-color: #f8f8f8;
+    padding: 2rem 1rem;
+  }
+  
+  .card {
+  flex: 1 1 0;                 /* All cards grow equally */
+  background-color: #c492b1ff;
+  color: #ffffff;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  min-width: 0;                /* Prevents overflow when shrinking */
 }
+
+
+
+  .same {
+    height: 100%;
+  }
+  
+  footer {
+    background-color: #3b0d11ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    background-color: #c492b1ff;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  form button:hover {
+    background-color: #9dc7c8ff;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 1rem;
+  }
+  
+  .gallery img {
+    max-width: 100%;
+    width: 300px;
+    border: 2px solid #555;
+    border-radius: 4px;
+  }
+
+  .card:hover {
+    background-color: #9dc7c8ff;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-img {
+    height: 7em; 
+    margin-right: 15px; 
+    float: left;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+
+.profile-container {
+  display: flex;
+  align-items: flex-start; /* Prevent sidebar from stretching to full height */
+}
+
+
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #333;
+  min-width: 120px;
+  max-width: 200px;
+  flex: 0 1 15vw;
+  gap: 0.5rem;
+  height: auto;            /* Ensure it's auto-sizing */
+}
+
+
+.profile-list img {
+  width: 90%;              /* full width of the container */
+  aspect-ratio: 1 / 1;      /* ensures height = width for a square */
+  object-fit: cover;        /* crop the image to fit the square */
+  border-radius: 12px;      /* rounded corners */
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+
+.profile-list img:hover {
+  border: 2px solid #fff;
+}
+
+.profile-details {
+  flex: 1;
+  padding: 2rem;
+  background: #f4f4f4;
+}
+
+.content-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+  @media (max-width: 768px) {
+    .top-bar {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    nav li {
+        padding: 0.5rem 0;
+      }
+      
+      nav a {
+        display: block;
+        padding: 0.5rem 1rem;
+      }
+      
+  
+  .hero, .quick-links, .container {
+    padding: 1rem;
+  }
+
+  /* Make profile images horizontal on small screens */
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-list {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .profile-list img {
+    width: 18vw;
+    max-width: 80px;
+  }
+
+  .content-section {
+    width: 100%;
+  }
+
+
+  }

@@ -1,53 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDTheising Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: black;
-        }
-
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-family: Arial, sans-serif;
-            font-size: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - CDIS</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="canvas-container"></div>
-    <button id="backButton" style="position:absolute;top:20px;left:20px;z-index:1;">Back</button>
-    <div class="overlay">Use Arrow Keys or Click/Tap Folders</div>
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <div style="display: inline-block;">
+          <h1 class="brand">Samuel Theising</h1>
+          <p>CS Graduate/Web Developer</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Import Map for Three.js -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
-                "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/GLTFLoader.js"
-            }
-        }
-    </script>
+  <main class="home">
+    <section class="hero">
+      <h2>Welcome to <span class="brand">My Portfolio</span></h2>
+      <p>A new CS graduate portfolio that will be steadily added to.</p>
+      <p>Thank you for the visit.</p>
+      <a href="contact.html" class="cta-button">Contact Me</a>
+    </section>
 
-    <!-- Load Three.js script -->
-    <script type="module" src="./js/main.js"></script>
+    <section class="intro">
+      <div class="container">
+        <h3 class="brand">My Mission</h3>
+        <p>I, <span class="brand">Samuel Theising</span>, have interests in Machine Learning, Data Analytics, Research Projects, and Game Development.</p>
+        <p>My goal is to express and explore all of these even more in my free time, now that I am away from college.</p>
+      </div>
+    </section>
+
+    <section class="quick-links">
+        <div class="flex-container">
+          <button class="card" onclick="location.href='about.html'">
+            <h4>About Me</h4>
+            <p>Learn about my history, work and personal.</p>
+          </button>
+          <button class="card" onclick="location.href='index.html'">
+            <h4>Under Constuction</h4>
+            <p>I plan to place a blog here, but that project is backburnered...</p>
+          </button>
+          <button class="card" onclick="location.href='projects.html'">
+            <h4>Projects</h4>
+            <p>Look through my projects, both currently in progess and completed.</p>
+          </button>
+        </div>
+      </section>
+      
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
