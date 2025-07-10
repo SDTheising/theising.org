@@ -31,108 +31,153 @@
   <main class="page">
       <div class="profile-container">
         <div class="profile-list">
-          <img src= "https://placehold.co/600x400?text=Home" alt="Home" onclick="showSection('home')">
-          <img src="https://placehold.co/600x400?text=Employee" alt="Bob" onclick="showSection('bob')">
-          <img src="https://placehold.co/600x400?text=Employee" alt="Charlie" onclick="showSection('charlie')">
-          <img src= "https://placehold.co/600x400?text=Employee" alt="John" onclick="showSection('john')">
-          <img src="https://placehold.co/600x400?text=Employee" alt="Jane" onclick="showSection('jane')">
+          <img src= "./images/chart.png" alt="Interests" onclick="showSection('interests')">
+          <img src= "./images/courthouse.jpg" alt="Stage one" onclick="showSection('stage1')">
+          <img src="./images/pike.webp" alt="Stage two" onclick="showSection('stage2')">
+          <img src="./images/purdue2.svg"  alt="Stage three" onclick="showSection('stage3')">
+          <img src= "./images/indy.jpg" alt="Stage four" onclick="showSection('stage4')">
         </div>
 
 
+<div id="interests" class="content-section">
+        <!-- Content for Section 4 -->
+         <div class = "flex-container">
+          </div>
 
-      <div id="home" class="content-section">
+          <div> 
+          <h2>My interests primary</h2>
+
+          <hr>
+
+            <ul>
+              <li>Data Analytics</li>
+              <li>Machine Learning</li>
+              <li>Game Development</li>
+            </ul>
+            <p>
+              These are of course overly broad and unspecific, but I hope to put them to use within my future career. 
+            </p>
+            <p>
+              I hope to find a job that can marry at least two of them, such as a position in research and data analytics using Machine Learning, 
+              or a position within a game developer finding trends around player engagement and enjoyement.
+            </p>
+
+            <p>
+              Aside from work related interests, I still maintain an interest in biology and zoology and indulge myself frequently. 
+              I am also getting back into reading after a hiatus during college.
+            </p>
+         </div>
+      </div>
+      <div id="stage1" class="content-section hidden">
         <!-- Content for Section 1 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+1" alt="Project 1" />
+          <img src="./images/petersburg1.webp" style="height: 50%; width: 70%;" alt="Project 1" />
          </div>
 
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>Early Life</h2>
 
           <hr>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I was raised in a small town in southern Indiana. Computers were not a large part of my childhood, with the exception of a Playstation 2 my father bought shortly before I was born.
+            This kicked off a lifetime enjoyment of video games, which equally kicked off an interest in computers as I grew older. 
           </p>
+
+          <p>
+            Despite this, I wanted to be something more "Scientific." Specifically, I want to be a biologist. I dreamed of being a marine biologist in particular, 
+            something about the unexplored depths drawing me in. 
+          </p>
+
+
          </div>
       </div>
-      <div id="bob" class="content-section hidden">
+      <div id="stage2" class="content-section hidden">
         <!-- Content for Section 2 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
+          <img src="./images/pike2.jpg" alt="Pike Central" />
          </div>
          
           <div> 
-          <h2>Mutual Learning in Machine Learning Algorithms</h2>
+          <h2>School life.</h2>
 
           <hr>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I was never particularly good at school. I got decent grades, but I just hated to pay attention. What I loved, though, was reading. 
+            And read I did, often ignoring whatever it was that my teacher was trying to tell me to instead read a new book.
           </p>
+
+          <p>
+            This reading is where I attribute my enjoyment of creating characters and worlds, which just fed into my determination to become a game designer. 
+            I wanted to tell stories, and I wanted to make the things I wanted to play.
+          </p>
+
+          <p>
+            My start at more technical interests is, I image at least, a common story for anyone my age. It all started with Minecraft, 
+            where I had to learn to actually use a computer. Hacked clients were no joke, and I was not above hacking on random servers for a quick laugh.
+          </p>
+
+          <p>
+            The very end of my school career was the start of covid-19 lockdowns. During this time I decided to finally bite the bullet and learn to code before I got into college. 
+            I started with C++, which may not have been the easiest choice, but I had heard that it was the most used and I wanted my skills to be useful.
+          </p>
+
+
+
          </div>
       </div>
-      <div id="charlie" class="content-section hidden">
+      <div id="stage3" class="content-section hidden">
         <!-- Content for Section 3 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
+          <img src="./images/IUPUI_Gateway.jpg" style="width: 50%;" alt="IUPUI Gateway" />
+          <img src="./images/vucampus.jpg" style="width: 50%;" alt="VU Campus" />
           </div>
 
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>My College Career.</h2>
 
           <hr>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I went to too many colleges. 
           </p>
+
+          <p>
+            I began my college career in 2020 at Vincennes University. While there I achieved an Associates of Science in Computer Science. 
+            It was a nice school, and one in which I enjoyed my time despite the smaller campus and class sizes. I learned a great deal about software development, 
+            and gained my lifelong appreciation for the Java langauge, which is still currently my favorite despite it's flaws.
+          </p>
+
+          <p>
+            After that degree I transferred to IUPUI in 2022. While there I techincally achieved no degree, as in 2024 the college split into IU Indy and Purdue Indy, 
+            with me transferring to the Purdue side. While there I achieved my Bachelors of Art in Applied Computer Science.
+          </p>
+
+
+
          </div>
       </div>
-      <div id="john" class="content-section hidden">
+      <div id="stage4" class="content-section hidden">
         <!-- Content for Section 4 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
+          <img src="./images/urn.webp" style="width: 75%; align-self: center;" alt="Project 4" />
           </div>
 
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>Post Graduate Life</h2>
 
           <hr>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            This section has just started, but I've kicked it up a notch on my job search, aside from my current employment as the Web Developer at CDIS (Their new site is under construction by me) 
+            and as a pharmacy technician at CVS. 
           </p>
-         </div>
-      </div>
-      <div id="jane" class="content-section hidden">
-        <!-- Content for Section 5 -->
-         <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+5" alt="Project 5" />
-          </div>
-
-
-          <div> 
-          <h2>Lorem ipsum dolor.</h2>
-
-          <hr>
-
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I've found myself able to pour much more time into my projects, but have to constantly fight paralysis from having so many choices of what to work on.
+          </p>
+          <p>
+            I've taken up some extra hobbies on the side as well, such as learning photography. (Pictured above.)
           </p>
          </div>
       </div>

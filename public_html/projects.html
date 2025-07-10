@@ -13,7 +13,8 @@
       <div class="logo">
         <div style="display: inline-block;">
           <h1 class="brand">Samuel Theising</h1>
-          <p>CS Graduate/Web Developer</p>
+          <p>CS Graduate</p>
+          <p>Aspiring Data Analyst</p>
         </div>
       </div>
       <nav>
@@ -42,20 +43,18 @@
           </p>
           </button>
           <button class="card" onclick="showSection('section2')">
-            <h4>[Project2]</h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <h4>Church Topics Analysis</h4>
+            <p>A currently in-progress longterm project involving the collecting of data related to churches and the topics their sermons cover.</p>
+            <p>The goal is to identify any trends within the sermons related to topics and congregational size/demographics.</p>
           </button>
           <button class="card" onclick="showSection('section3')">
-            <h4>[Project3]</h4>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h4>This Website!</h4>
+            <p>This website has gone through several iterations, each significantly different. </p>
+            <p>I still plan to bring one or two back, but getting up finished was a priority.</p>
           </button>
           <button class="card" onclick="showSection('section4')">
-            <h4>[Project4]</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </button>
-          <button class="card" onclick="showSection('section5')">
-            <h4>[Project5]</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h4>My Game(s)</h4>
+            <p>I have repeatedly started and stopped game development as I have gone through my career. Here are a few games, either dead or in progress.</p>
           </button>
         </div>
     </section>
@@ -516,64 +515,132 @@
       <div id="section2" class="content-section gallery hidden">
         <!-- Content for Section 2 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
-          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
-          <img src="https://placehold.co/600x400?text=Section+2" alt="Project 2" />
+          <img style="width: 100%; height: 100%;" src="./images/CSVofChurches.png" alt="Image of CSV" />
          </div>
          
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>Church Topics Analysis</h2>
 
           <hr>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                This project was started with a question I asked after moving churches several times: 
+                How does congregation size and denomination affect the topics covered in sermons.
+          </p>
+          <p>
+                My hypothesis is that the topics will get more negative, and more related to end times, with decreasing congregation size.
+          </p>
+
+          <br>
+
+          <p>
+                To start, I found a website that aggregates churches for people looking for their next one.
+                This website also very helpfully contained information such as denomination and approximate congregation size.
+          </p>
+          <p>
+                After scraping through the site, I came away with around 1,000 total churches in my local area, which I chose to limit the scope of my project to.
+                I additionally needed to scrape each site individually for links to their sermons. I figured the more direct way would be to find youtube links, as many
+                churches began hosting their own weekly livestreams during the covid-19 lockdowns.
+          </p>
+
+          <br>
+
+          <p>
+                This is the state the project has currently found itself in, I have a small MongoDB database set up (I wanted to try it out after using purely relational databases in the past) 
+                and I am working on perfecting my web scraper so it won't take days to get through every website. 
+          </p>
+
+          <p>
+                The next step is to pull transcipts of each sermon from their respective youtube videos, parse and lemmatize them, and then place it all into my database for further analysis.
+          </p>
+
+          <p>
+                I plan to use sentiment analysis to determine whether the sermon is mainly positive or negative, as well as using the techniques I gained from my previous project 
+                Mutual Learning in Machine Learning Algorithms, to sort them into categories based on the overall topics. 
           </p>
          </div>
       </div>
       <div id="section3" class="content-section gallery hidden">
         <!-- Content for Section 3 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
-          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
-          <img src="https://placehold.co/600x400?text=Section+3" alt="Project 3" />
+          <img src="./images/theising_org_old.png" alt="Old Website/Future Website" />
+          <img src="./images/theising_org_070925.png" alt="Current Website!" />
           </div>
 
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>This Website.</h2>
 
           <hr>
+          
+          <h3>The Early Days</h3>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            I truly wanted my portfolio website to be something special. I had grand plans, a retro-istic website where the UI looked like something plucked out of an early 80's
+            video game. Well, an 80's game portrayed in a movie from the 2010's, I don't know that any really had the look I wanted.
+          </p>
+          <p>
+            It would be fully 3d rendered, with wireframe folders for navigation and pages that would be styled the same. 
+            Unfortunately, this was eating up too much of my time. I really, really needed to just get something out there, and trying to make my design work in an unfamiliar system (Three.js)
+            was simply too slow, especially considering I equally needed to get content up for the site, not just a framework.
+          </p>
+
+          <h3>Nowadays</h3>
+
+          <p>
+            Thus, here we are. With a simplistic primarly HTML and CSS website to host what I've been up to. I still plan to implement what I truly wanted, but 
+            that has been placed on the backburner, along with so many other projects. 
+          </p>
+
+          <p>
+            You can still visit the site I really wanted to make <a href="3d.theising.org">here</a> though! 
+            It is very unfinished, but perhaps you can see the vision.
           </p>
          </div>
       </div>
       <div id="section4" class="content-section gallery hidden">
         <!-- Content for Section 4 -->
          <div class = "flex-container">
-          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
-          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
-          <img src="https://placehold.co/600x400?text=Section+4" alt="Project 4" />
+          <img src="./images/solitaire.png" alt="Solitaire" />
+          <img src="./images/mecha_leg.png" alt="Mecha Leg" />
+
+
           </div>
 
           <div> 
-          <h2>Lorem ipsum dolor.</h2>
+          <h2>My Games</h2>
 
           <hr>
 
+          <h3>Solitaire</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            This is both the newest and most simplistic. Born of one simple desire: To play Solitaire on my phone, without advertisements, for free. 
           </p>
+
+          <p>
+            There has been some progress, but it only began within the past week as of writing, so progress is minor. 
+            I have never worked on a 2d game before, so progress is also very much a learning experience.
+          </p>
+
+          <p>
+            In the current state, there are 52 cards, each one properly textured, shuffled, and laid out for a game. They can also be dragged about. 
+          </p>
+
+          <p>
+            Still to be added is the ability to place cards on top of eachother in the correct order, as well as remove them from the game by stacking them on their respective suites.
+          </p>
+
+
+          <h3>Unnamed Mecha Game</h3>
+
+          <p>
+            I have been slowly building up a shared world. This world contains all of the characters I have made up throughout my life, a constant hobby. 
+            This is the setting of the game, one which I intend to be the first opening into the world that I share, aside from some small writings I have put out.
+          </p>
+
+          <p>
+            Unfortunately, this one is even less finished than the Solitaire. I am learning 3d modeling at the moment, and have put a pause on the software development side until I have at least a few assets completed.
+          </p>
+
          </div>
       </div>
       <div id="section5" class="content-section gallery hidden">
@@ -603,9 +670,9 @@
     <section class="container content-section">
       <h2 class="brand">Project Gallery</h2>
       <div class="gallery">
-        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 1" />
-        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 2" />
-        <img src="https://placehold.co/600x400?text=Placeholder" alt="Project 3" />
+        <img src="./images/deepnn baller.png" alt="Deep Neural Network Confusion Matrix" />
+        <img src="./images/output.webp" alt="Roly Poly Game" />
+        <img src="./images/sem1proj.webp" alt="Project from first semester of college." />
       </div>
 
       
