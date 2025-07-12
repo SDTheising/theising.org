@@ -12,10 +12,10 @@ $dotenv->load();
 define('COUNT_FILE', __DIR__ . '/email_count.txt');
 define('SEND_LIMIT', 100);
 define('LOG_FILE', __DIR__ . '/ses_debug.log');
-define('REDIRECT_SUCCESS', '../contact.html?status=success');
-define('REDIRECT_ERROR', '../contact.html?status=error');
-define('REDIRECT_INVALID', '../contact.html?status=invalid');
-define('REDIRECT_LIMIT', '../contact.html?status=limit');
+define('REDIRECT_SUCCESS', '../contact/index.html?status=success');
+define('REDIRECT_ERROR', '../contact/index.html?status=error');
+define('REDIRECT_INVALID', '../contact/index.html?status=invalid');
+define('REDIRECT_LIMIT', '../contact/index.html?status=limit');
 
 // POST only
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
