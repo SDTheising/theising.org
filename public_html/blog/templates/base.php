@@ -7,7 +7,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= htmlspecialchars($page_title ?? 'Samuel Theising') ?></title>
+    <link rel="stylesheet" href="/blog/templates/css/carousel.css">
     <link rel="stylesheet" href="/css/styles.css">
+    
 </head>
 <body>
   <header>
@@ -36,10 +38,6 @@
     <?= $page_content ?>
   </main>
 
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
-    </div>
-  </footer>
+  <script src="/blog/templates/js/carousel.js"></script> 
 </body>
 </html>

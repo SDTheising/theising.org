@@ -17,6 +17,26 @@ if (!file_exists($file)) {
     $page_title = $post['title'];
 
     ob_start();
+
+    // === CAROUSEL INJECTION START ===
+    $carouselDir = __DIR__ . "/images/posts/$slug/";
+    $carouselUrl = "images/posts/$slug/";
+    $images = glob($carouselDir . "*.{webp}", GLOB_BRACE);
+
+    if (!empty($images)) {
+        echo '<div class="carousel-container">';
+        echo '<button class="arrow left">&#10094;</button>';
+        echo '<div class="carousel-track" id="carousel">';
+        foreach ($images as $imgPath) {
+            $imgName = basename($imgPath);
+            echo '<div class="carousel-slide"><img src="' . $carouselUrl . $imgName . '" alt="" style="height = 2em; max-height:500px"></div>';
+        }
+        echo '</div>';
+        echo '<button class="arrow right">&#10095;</button>';
+        echo '</div>';
+    }
+    // === CAROUSEL INJECTION END ===
+
     echo "<article>";
     echo "<h2>" . htmlspecialchars($post['title']) . "</h2>";
     echo "<p><em>" . htmlspecialchars($post['date']) . "</em></p>";
@@ -27,6 +47,7 @@ if (!file_exists($file)) {
     }
     echo "</p>";
     echo "</article>";
+
     $page_content = ob_get_clean();
 }
 
