@@ -19,8 +19,8 @@ if (!file_exists($file)) {
     ob_start();
 
     // === CAROUSEL INJECTION START ===
-    $carouselDir = __DIR__ . "/images/posts/$slug/";
-    $carouselUrl = "images/posts/$slug/";
+    $carouselDir = __DIR__ . "/posts/images/posts/$slug/";
+    $carouselUrl = "posts/images/posts/$slug/";
     $images = glob($carouselDir . "*.{webp}", GLOB_BRACE);
 
     if (!empty($images)) {
