@@ -185,7 +185,7 @@ class Parsedown
 
             while (($beforeTab = strstr($line, "\t", true)) !== false)
             {
-                $shortage = 4 - mb_strlen($beforeTab, 'utf-8') % 4;
+                $shortage = 4 - $this->utf8Strlen($beforeTab) % 4;
 
                 $line = $beforeTab
                     . str_repeat(' ', $shortage)
@@ -341,6 +341,16 @@ class Parsedown
     protected function isBlockCompletable($Type)
     {
         return method_exists($this, 'block' . $Type . 'Complete');
+    }
+
+    protected function utf8Strlen($text)
+    {
+        if (function_exists('mb_strlen'))
+        {
+            return mb_strlen($text, 'utf-8');
+        }
+
+        return strlen($text);
     }
 
     #

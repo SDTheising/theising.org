@@ -18,29 +18,51 @@ if (!file_exists($file)) {
 
     ob_start();
 
-    // === CAROUSEL INJECTION START ===
+    // Inject carousels where requested in the Markdown body.
     $carouselDir = __DIR__ . "/posts/images/posts/$slug/";
     $carouselUrl = "posts/images/posts/$slug/";
-    $images = glob($carouselDir . "*.{webp}", GLOB_BRACE);
+    $images = glob($carouselDir . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
+    $carouselHtml = '';
     if (!empty($images)) {
-        echo '<div class="carousel-container">';
-        echo '<button class="arrow left">&#10094;</button>';
-        echo '<div class="carousel-track" id="carousel">';
-        foreach ($images as $imgPath) {
-            $imgName = basename($imgPath);
-            echo '<div class="carousel-slide"><img src="' . $carouselUrl . $imgName . '" alt="" style="height = 2em; max-height:500px"></div>';
+        sort($images);
+
+        ob_start();
+        ?>
+<div class="carousel-container" data-carousel-id="<?= htmlspecialchars($slug, ENT_QUOTES) ?>">
+  <button class="arrow left" type="button" aria-label="Previous image">&#10094;</button>
+  <div class="carousel-track">
+    <?php foreach ($images as $index => $imgPath): ?>
+      <?php $imgName = basename($imgPath); ?>
+      <div class="carousel-slide<?= $index === 0 ? ' active' : '' ?>">
+        <img src="<?= htmlspecialchars($carouselUrl . $imgName, ENT_QUOTES) ?>" alt="" />
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <button class="arrow right" type="button" aria-label="Next image">&#10095;</button>
+</div>
+        <?php
+        $carouselHtml = trim(ob_get_clean());
+        if ($carouselHtml !== '') {
+            $carouselHtml = preg_replace('/^[\t ]+/m', '', $carouselHtml);
         }
-        echo '</div>';
-        echo '<button class="arrow right">&#10095;</button>';
-        echo '</div>';
     }
-    // === CAROUSEL INJECTION END ===
+
+    $body = $post['body'];
+    if ($carouselHtml) {
+        if (stripos($body, '[carousel]') !== false) {
+            $body = preg_replace('/\[carousel\]/i', $carouselHtml, $body);
+        } else {
+            $body = $carouselHtml . "\n\n" . $body;
+        }
+    } else {
+        $body = preg_replace('/\[carousel\]/i', '', $body);
+    }
 
     echo "<article>";
     echo "<h2>" . htmlspecialchars($post['title']) . "</h2>";
     echo "<p><em>" . htmlspecialchars($post['date']) . "</em></p>";
-    echo $parser->text($post['body']);
+    echo $parser->text($body);
     echo "<p>Tags: ";
     foreach ($post['tags'] ?? [] as $tag) {
         echo "<a href='" . $base_path . "index.php?tag=" . urlencode($tag) . "'>" . htmlspecialchars($tag) . "</a> ";
