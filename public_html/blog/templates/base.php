@@ -17,7 +17,7 @@
       <div class="logo">
         <div style="display: inline-block;">
           <h1 class="brand">Samuel Theising</h1>
-          <p>Research Associate @ <a href="https://dorisresearch.com/">DORIS</a></p>
+          <p>Data Analyst @ <a href="https://dorisresearch.com/">DORIS</a></p>
           <p>Eventual Data Scientist</p>
         </div>
       </div>
