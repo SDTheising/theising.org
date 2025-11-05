@@ -1,5 +1,7 @@
 Content-signal: search=yes,ai-input=no,ai-train=no
 
+Sitemap: https://theising.org/sitemap.xml
+
 # Allow everything by default
 User-agent: *
 Allow: /

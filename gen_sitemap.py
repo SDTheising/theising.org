@@ -19,7 +19,8 @@ for dirpath, dirnames, filenames in os.walk(ROOT):
         if any(part.startswith(".") or part in {"lib", "templates", "posts", "images"} for part in rel.split(os.sep)):
             continue
         loc = f"{BASE_URL}/" if rel == "." else f"{BASE_URL}/{rel.strip('/')}/"
-        lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(dirpath, "index.html"))).isoformat()
+        lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(dirpath, "index.html"))).strftime("%Y-%m-%d")
+
         urls[loc] = lastmod
 
 # 2) Add every blog post .md slug
@@ -27,7 +28,7 @@ for f in os.listdir(BLOG_POSTS):
     if f.endswith(".md"):
         slug = os.path.splitext(f)[0]
         loc = f"{BASE_URL}/blog/post.php?slug={slug}"
-        lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(BLOG_POSTS, f))).isoformat()
+        lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(BLOG_POSTS, f))).strftime("%Y-%m-%d")
         urls[loc] = lastmod
 
 # 3) Write sitemap.xml
