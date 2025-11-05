@@ -1,0 +1,42 @@
+# Allow everything by default
+User-agent: *
+Allow: /
+
+# Block AI/data-training crawlers (non-exhaustive)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /
+User-agent: Claude-User
+Disallow: /
+User-agent: Claude-Web
+Disallow: /
+User-agent: Claude-SearchBot
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+User-agent: Perplexity-User
+Disallow: /
+
+# ByteDance
+User-agent: Bytespider
+Disallow: /
+
+# Meta (Facebook)
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+

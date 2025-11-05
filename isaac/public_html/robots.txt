@@ -1,0 +1,3 @@
+# Temporary before the site is set up.
+User-agent: *
+Disallow: /
