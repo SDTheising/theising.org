@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Revival | Precision Blade Sharpening</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <span class="logo-mark">ER</span>
+            <div>
+                <p class="logo-label">Edge Revival</p>
+                <p class="logo-tagline">Precision blade sharpening</p>
+            </div>
+        </div>
+        <nav aria-label="Primary navigation">
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-content">
+                <p class="eyebrow">Mobile + mail-in grinding</p>
+                <h1>Bring every edge back to life</h1>
+                <p>
+                    Professional sharpening for kitchen, outdoor, and specialty blades with turnarounds tailored to your workbench or busy kitchen.
+                    Precision tooling keeps heat down and geometry dialed in for consistent, reliable edges.
+                </p>
+                <div class="hero-cta">
+                    <a class="btn primary" href="#contact">Start an order</a>
+                    <a class="btn ghost" href="#pricing">View pricing guide</a>
+                </div>
+            </div>
+            <div class="hero-media placeholder" aria-hidden="true">
+                <p>Hero image placeholder</p>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="section-header">
+                <p class="eyebrow">Sharpening specialties</p>
+                <h2>Dialed for steel, grind, and finish</h2>
+                <p>From lightweight prep knives to full-tang tools, every blade is documented and honed for your preferred edge profile.</p>
+            </div>
+            <div class="services-grid">
+                <article>
+                    <h3>Kitchen collections</h3>
+                    <p>Chef, nakiri, petty, boning, serrated touch-ups, and custom sets with consistent polish levels.</p>
+                </article>
+                <article>
+                    <h3>Outdoor + specialty</h3>
+                    <p>Axes, chisels, plane irons, culinary shears, and one-off show pieces with matched bevels.</p>
+                </article>
+                <article>
+                    <h3>Restoration passes</h3>
+                    <p>Chip removal, profile corrections, convex conversions, and finish stropping kept as add-on steps.</p>
+                </article>
+            </div>
+            <div class="media-row">
+                <div class="media placeholder" aria-hidden="true">
+                    <p>Process image placeholder</p>
+                </div>
+                <div class="media placeholder" aria-hidden="true">
+                    <p>Detail image placeholder</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="pricing">
+            <div class="section-header">
+                <p class="eyebrow">Pricing markers</p>
+                <h2>Clear structure, tuned per blade</h2>
+                <p>Exact totals depend on steel, condition, and finish level. Use the guide below to estimate your batch.</p>
+            </div>
+            <div class="pricing-grid">
+                <article class="price-card" aria-label="Specialty items priced per inch">
+                    <h3>Specialty items</h3>
+                    <ul class="price-list">
+                        <li>
+                            <span>Show-grade chef knives</span>
+                            <span class="price-value">$X.XX per inch</span>
+                        </li>
+                        <li>
+                            <span>Damascus or pattern-welded blades</span>
+                            <span class="price-value">$X.XX per inch</span>
+                        </li>
+                        <li>
+                            <span>Single-bevel + yanagiba</span>
+                            <span class="price-value">$X.XX per inch</span>
+                        </li>
+                        <li>
+                            <span>Rescue / serrated tools</span>
+                            <span class="price-value">$X.XX per inch</span>
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="price-card" aria-label="Kitchen knife pricing">
+                    <h3>Kitchen knives</h3>
+                    <div class="kitchen-pricing">
+                        <div>
+                            <p class="label">Small (≤ 5 in)</p>
+                            <p class="price-value">$X.XX each</p>
+                        </div>
+                        <div>
+                            <p class="label">Large (> 5 in)</p>
+                            <p class="price-value">$X.XX each</p>
+                        </div>
+                    </div>
+                    <p class="fine-print">Includes thinning as-needed + stropping. Mirror finishes quoted separately.</p>
+                </article>
+
+                <article class="price-card emphasis" aria-label="Specialty sharpening range">
+                    <h3>Specialty sharpening</h3>
+                    <p class="range">$X.XX – $Y.YY per inch</p>
+                    <p>Applies to machetes, draw knives, luthier tools, fabrication blades, and other oversized work.</p>
+                    <p class="fine-print">Minimum shop fee applies to single-blade drop-offs.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="section-header">
+                <p class="eyebrow">Book a session</p>
+                <h2>Tell me what needs an edge</h2>
+                <p>Share the steel, length, and timeline. You&rsquo;ll get scheduling options with shipping or on-site pickup instructions.</p>
+            </div>
+            <form id="contact-form" class="contact-form" action="../mail/index.php" method="POST" novalidate>
+                <div class="input-group">
+                    <label for="client-name">Name</label>
+                    <input id="client-name" name="client_name" type="text" placeholder="Full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="client-email">Return email</label>
+                    <input id="client-email" name="client_email" type="email" placeholder="name@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="blade-length">Blade length</label>
+                    <select id="blade-length" name="blade_length" required>
+                        <option value="" disabled selected>Select a length range</option>
+                    </select>
+                </div>
+                <div class="input-group full-width">
+                    <label for="project-notes">What needs sharpening?</label>
+                    <textarea id="project-notes" name="project_notes" rows="5" placeholder="List blade types, steel, issues to fix, preferred finish..." minlength="51" required></textarea>
+                    <p class="textarea-hint">Include at least 50 characters so I can give an accurate quote.</p>
+                </div>
+                <input type="hidden" name="form_context" value="blade-sharpening-intake">
+                <button class="btn primary" type="submit">Send details</button>
+                <p id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="current-year"></span> Edge Revival. All trademarks belong to their owners.</p>
+        <p class="footnote">Background wrap support ready: update <code>window.siteBackground</code> in <code>script.js</code> with your image once it is ready.</p>
+    </footer>
+</body>
+</html>
