@@ -21,7 +21,7 @@ if (!file_exists($file)) {
     // Inject carousels where requested in the Markdown body.
     $carouselDir = __DIR__ . "/posts/images/posts/$slug/";
     $carouselUrl = "posts/images/posts/$slug/";
-    $images = glob($carouselDir . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
+    $images = glob($carouselDir . '*.{jpg,jpeg,png,gif,webp,avif}', GLOB_BRACE);
 
     $carouselHtml = '';
     if (!empty($images)) {
