@@ -248,6 +248,81 @@ body {
   height: auto;
 }
 
+/* ── Blog article layout ───────────────────── */
+
+article {
+    max-width: 740px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+article p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+article h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: #3b0d11;        /* your black-bean, ties headings to the header */
+}
+
+article hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
+}
+
+/* ── Figures and images ─────────────────────── */
+
+article figure {
+    margin: 1.5rem 0;
+}
+
+article figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+article figcaption {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.4rem;
+    font-style: italic;
+}
+
+/* ── Inline asides (sup/sub used as footnotes) */
+
+article sup,
+article sub {
+    display: block;
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* ── Iframe embeds ──────────────────────────── */
+
+article iframe {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+/* ── Carousel centering ─────────────────────── */
+
+.carousel-container {
+    margin: 2rem auto;
+}
+
 
   @media (max-width: 768px) {
     .top-bar {
