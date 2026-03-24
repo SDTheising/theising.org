@@ -251,7 +251,7 @@ body {
 /* ── Blog article layout ───────────────────── */
 
 article {
-    max-width: 740px;
+    max-width: 900px;
     margin: 0 auto;
     line-height: 1.8;
 }
@@ -303,6 +303,15 @@ article sub {
     line-height: 1.4;
     margin-bottom: 1rem;
     font-style: italic;
+}
+
+article p > sup,
+article p > sub {
+    display: inline;
+    font-size: 0.82rem;
+    color: #666;
+    font-style: italic;
+    vertical-align: baseline; /* keeps it on the line rather than raised/lowered */
 }
 
 /* ── Iframe embeds ──────────────────────────── */
