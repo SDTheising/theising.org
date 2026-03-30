@@ -134,6 +134,19 @@ body {
   min-width: 0;                /* Prevents overflow when shrinking */
 }
 
+.card-button {
+  align-items: center;        /* NEW: Centers the flex items horizontally */
+  text-align: center;         /* NEW: Centers the text inside the items */
+  min-height: 100%;
+  min-width: 0;               /* Prevents overflow when shrinking */
+  text-decoration: none;      /* NEW: Removes the anchor tag underline */
+  cursor: pointer;
+}
+
+.card h4, .card p {
+  color: #ffffff;
+}
+
 
 
   .same {
