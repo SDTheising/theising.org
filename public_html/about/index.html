@@ -70,7 +70,7 @@
             </p>
 
             <p>
-              I've also been growing as a photographer, and have been learning to use my camera more and more.
+              I've also been growing as a photographer, and have been learning to use my camera more often.
             </p>
          </div>
       </div>
@@ -197,6 +197,16 @@
       <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
     </div>
   </footer>
+  <script>
+  document.querySelectorAll('.profile-list img').forEach(img => {
+    img.addEventListener('click', function() {
+      showSection(this.alt === 'Interests' ? 'interests' :
+                  this.alt === 'Stage one' ? 'stage1' :
+                  this.alt === 'Stage two' ? 'stage2' :
+                  this.alt === 'Stage three' ? 'stage3' : 'stage4');
+    });
+  });
+  </script>
   <script src="/js/content.js"></script>
 </body>
 </html>
