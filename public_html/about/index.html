@@ -34,11 +34,11 @@
   <main class="page">
       <div class="profile-container">
         <div class="profile-list">
-          <img src= "/images/chart.webp" alt="Interests" onclick="showSection('interests')">
-          <img src= "/images/courthouse.webp" alt="Stage one" onclick="showSection('stage1')">
-          <img src="/images/pike.webp" alt="Stage two" onclick="showSection('stage2')">
-          <img src="/images/purdue2.svg"  alt="Stage three" onclick="showSection('stage3')">
-          <img src= "/images/indy.webp" alt="Stage four" onclick="showSection('stage4')">
+          <img src="/images/chart.webp" alt="Interests" data-section="interests">
+          <img src="/images/courthouse.webp" alt="Stage one" data-section="stage1">
+          <img src="/images/pike.webp" alt="Stage two" data-section="stage2">
+          <img src="/images/purdue2.svg" alt="Stage three" data-section="stage3">
+          <img src="/images/indy.webp" alt="Stage four" data-section="stage4">
         </div>
 
 
@@ -197,16 +197,6 @@
       <p>&copy; 2025 <span class="brand">Samuel Theising</span> - All Rights Reserved.</p>
     </div>
   </footer>
-  <script>
-  document.querySelectorAll('.profile-list img').forEach(img => {
-    img.addEventListener('click', function() {
-      showSection(this.alt === 'Interests' ? 'interests' :
-                  this.alt === 'Stage one' ? 'stage1' :
-                  this.alt === 'Stage two' ? 'stage2' :
-                  this.alt === 'Stage three' ? 'stage3' : 'stage4');
-    });
-  });
-  </script>
   <script src="/js/content.js"></script>
 </body>
 </html>

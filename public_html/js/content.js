@@ -12,4 +12,10 @@ function showSection(sectionId) {
 
 document.addEventListener('DOMContentLoaded', () => {
   showSection('interests');
+
+  document.querySelectorAll('.profile-list img').forEach(img => {
+    img.addEventListener('click', () => {
+      showSection(img.dataset.section);
+    });
+  });
 });
