@@ -33,14 +33,14 @@
     <section class="container">
       <h2 class="brand">Contact Us</h2>
       <p><strong>Phone:</strong> Please email for it. It's already online but I don't want it even easier to find.</p>
-      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
       <form id="contact-form" action="/php/send-email.php" method="POST">
+        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="text" name="name" placeholder="Name" required />
         <input type="email" name="email" placeholder="Email" required />
         <input type="tel" name="phone" placeholder="Phone" />
         <textarea name="message" placeholder="Your message" rows="4" required></textarea>
-        <button type="submit">Send Message</button>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAACyD4dfwZLa4xxSy"></div>
+        <button type="submit">Send Message</button>
       </form>      
       <p id="status-message"></p>
 
