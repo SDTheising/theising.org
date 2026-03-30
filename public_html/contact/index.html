@@ -40,6 +40,7 @@
         <input type="tel" name="phone" placeholder="Phone" />
         <textarea name="message" placeholder="Your message" rows="4" required></textarea>
         <button type="submit">Send Message</button>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACyD4dfwZLa4xxSy"></div>
       </form>      
       <p id="status-message"></p>
 
@@ -54,5 +55,10 @@
     </div>
   </footer>
   <script src="/js/email.js"></script>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer
+  ></script>
 </body>
 </html>
