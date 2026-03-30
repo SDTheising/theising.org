@@ -242,6 +242,11 @@ body {
   padding: 2rem;
   background: #f4f4f4;
 }
+.content-section{
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
 
 .content-section img {
   max-width: 100%;
