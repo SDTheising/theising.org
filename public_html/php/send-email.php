@@ -29,6 +29,16 @@ if (!empty($_POST['website'])) {
     header("Location: " . REDIRECT_SUCCESS);
     exit;
 }
+// Turnstile verification
+$token = $_POST['cf-turnstile-response'] ?? '';
+$remoteip = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];
+$data = ['secret' => $_ENV['TURNSTILE_SECRET_KEY'], 'response' => $token, 'remoteip' => $remoteip];
+$options = ['http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)]];
+$result = json_decode(file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, stream_context_create($options)), true);
+if (!$result['success']) {
+    header("Location: " . REDIRECT_INVALID);
+    exit;
+}
 
 // Limit check
 if (!file_exists(COUNT_FILE)) file_put_contents(COUNT_FILE, '0', LOCK_EX);
