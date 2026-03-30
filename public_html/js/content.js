@@ -4,12 +4,12 @@ function showSection(sectionId) {
     section.classList.add('hidden');
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-  showSection('interests');
-});
-
   const target = document.getElementById(sectionId);
   if (target) {
     target.classList.remove('hidden');
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  showSection('interests');
+});
