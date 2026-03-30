@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$envPath = realpath(__DIR__ . '/../../'); // .env is two levels up
+$envPath = '/var/www/theising_env';
 $dotenv = Dotenv\Dotenv::createImmutable($envPath);
 $dotenv->load();
 
